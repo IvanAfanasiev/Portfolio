@@ -1,0 +1,204 @@
+body{
+    height: 100%;
+    background: linear-gradient(330deg, #EEFFAB 65%, #3F0759 100%) top / cover no-repeat;
+    font-family: "PT Sans";
+    margin: 0;
+    /* background-color: rgba(238, 255, 171, 0.5); */
+    line-height: 1;
+}
+::before, ::after{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+a{
+    text-decoration: none;
+    color: rgb(97, 14, 91);
+}
+
+
+
+._container{
+    max-width: 100%;
+    margin: 0px auto;
+    padding: 50px 20px;
+}
+.wrapper{
+    min-height: 100%;
+}
+.Parallax_BG{
+    min-height: 100vh;
+    max-height: 100vh;
+}
+.parallax{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.text_container{
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    font-weight: 700;
+    font-size: 52px;
+}
+.text_container > smallText{
+    font-size: 28px;
+    font-weight: 550;
+    color: rgb(88, 25, 133);
+}
+.text_container > figma{
+    position: relative;
+    text-transform: lowercase;
+    font-size: 20px;
+}
+.images{
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+}
+.image_item{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.mountains1, .mountains2, .mountains3, .trees, .sun{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+.mountains1{
+    background: url("SVG/BG1.svg") top / cover no-repeat;
+}
+.mountains2{
+    background: url("SVG/BG2.svg") top / cover no-repeat;
+}
+.mountains3{
+    background: url("SVG/BG3.svg") top / cover no-repeat;
+}
+.trees{
+    background: url("SVG/Trees.svg") top / cover no-repeat;
+}
+.sun{
+    background: url("SVG/Sun.svg") top / cover no-repeat;
+}
+
+.image_item{
+    position: absolute;
+}
+.main_content::before{
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    transform: translate(0, -100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, #ffffff99 175%  );
+    z-index: 3;
+}
+.arrow{
+    position: absolute;
+
+    color: rgb(194, 194, 194);
+    top: -40px;
+    font-size: 35px;
+    z-index: 13;
+    transition: 0.5s;
+}
+.arrow:hover{
+    color: white;
+    transform: translateY(-5px);
+}
+::-webkit-scrollbar{
+    display: none;
+}
+.main_content{
+    font-weight: 700;
+    /* pointer-events: none; */
+    position: relative;
+    background-color: #1f0240;
+    /* background-color: rgb(210, 210, 210); */
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.main_text{
+    position: relative;
+    left: 30%;
+    top: 0;
+    max-width: 65%;
+    width: 60vw;
+    color: rgb(230, 230, 230);
+    font-size: 35px;
+}
+.space{
+    position: relative;
+    height: 1250px;
+}
+.content_container{
+    text-align: center;
+    width: 100%;
+    font-weight: 750;
+    color: rgb(153, 83, 179);
+    /* font-size: clamp(20px, 5vw, 50px); */
+    font-size: 50px;
+}
+.content_container > smallText{
+
+    /* font-size: clamp(15px, 3vw, 30px); */
+    font-weight: 450;
+    color: rgb(218, 71, 71);
+}
+
+.pic{
+    position: absolute;
+    /* width: 30vw; */
+    min-height: 200px;
+    max-height: 400px;
+    top: 200px;
+    left: 20px;
+}
+.Point{
+    position: absolute;
+    top: 1100px;
+    color: rgba(0, 0, 0, 0);
+}
+@media (max-aspect-ratio: 3/2) {
+    .trees{
+        background-position: 20% top;
+    }
+}
+.slideTop{
+    animation-duration: 2s;
+    animation-name: slideFromLeft;
+}
+@keyframes slideFromTop {
+    0% {
+        transform: translateY(-25%);
+        color: rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+@keyframes slideFromLeft {
+    0% {
+        transform: translateX(-25%);
+        color: rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
