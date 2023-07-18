@@ -15,7 +15,7 @@ const CreateFooter = () => {
     return (
         <footer>
             <div className="footer">
-                Info or something else (contact details, social networks, advertising)
+                <p>Info or something else (contact details, social networks, advertising)</p>
             </div>
             <script src="./Theme.js"></script>
         </footer>

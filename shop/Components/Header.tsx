@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link"
 import imgsrc from '@/images/logo.png';
 
+import $ from "jquery";
 
 const CreateHeader = () => {
 
@@ -16,6 +17,19 @@ const CreateHeader = () => {
             setClass("phone_links");
         } 
     }
+
+    const ClearPanel = () =>{
+        SetVar("");
+    }
+
+    const [variable, SetVar] = useState("");
+
+    const HandleChange = (e) =>{
+      SetVar(e.target.value);
+    }
+
+
+
 
     return (
         <header>
@@ -41,20 +55,17 @@ const CreateHeader = () => {
                 <nav className="links">
                     <Link href="/">Home</Link>
                     <Link href="/catalog">Catalog</Link>
-                    {/* <Link href="/product">Product</Link> */}
                     <Link href="/favorites">Favorites</Link>
-                    {/* <Link href="/product/1asd">Product asd</Link> */}
                 </nav>
-
                 
-
-
                 <div className="searchPanel">
-                    <input className="search" placeholder="I looking for..." /> 
-                    <button><ion-icon name="close-circle-outline"></ion-icon></button>
-                    <ion-icon name="search-sharp"></ion-icon>
-                {/* value={searchReq} placeholder="Search" onChange={() => SetReq("as")}/> */}
-                    {/* <button onClick={ClearRequest}>X</button>    */}
+                        <input  className="search"
+                                placeholder="I looking for..."
+                                value={variable}
+                                onChange={(event) => HandleChange(event)}
+                                /> 
+                        <button onClick={ClearPanel} className="close-circle"><ion-icon name="close-circle-outline"></ion-icon></button>
+                        <ion-icon name="search-sharp"></ion-icon>
                 </div>
             </div>
             <script src="./Theme.js"></script>
