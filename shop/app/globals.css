@@ -1,4 +1,5 @@
-@layer phone, desktop;
+/* Header, Side bar, footer and some media queries */
+
 
 html{
   scroll-behavior: smooth;
@@ -25,6 +26,7 @@ header{
 }
 header:hover > .header{
   top: 0dvh;
+  transform: translateY(0);
 }
 input{
   box-sizing: border-box;
@@ -34,7 +36,8 @@ input{
   position: relative;
   width: 100%;
   height: 100px;
-  top: -100px;
+  top: 0dvh;
+  transform: translateY(-100px);
   left: 0;
   background-color: rgb(25, 70, 80);
 
@@ -81,40 +84,49 @@ input{
 }
 .phone_links_active > .phoneLinksButtn{
   transform: translateX(-100px);
-
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 0px;
-
-  border-left: solid 5px rgba(0, 0, 0, 0.75);
-  border-right: solid 5px rgba(0, 0, 0, 0);
-
+  box-shadow: inset  0px 0px 5px 5px rgb(255, 255, 255, 0.2);
+  background-color: rgb(30, 85, 100);
 }
+.phoneLinksButtn > line{
+  transition: 0.5s;
+}
+.phone_links_active > .phoneLinksButtn > :nth-child(1){
+  width: 20px;
+  left: 5px;
+  top: 10px;
+  transform: rotateZ(30deg);
+}
+.phone_links_active > .phoneLinksButtn > :nth-child(3){
+  width: 20px;
+  left: 5px;
+  bottom: 10px;
+  transform: rotateZ(-30deg);
+}
+
 
 .phoneLinksButtn{
   position: absolute;
-  right: -100px;
-  top: 0dvh;
-  height: 100px;
-  width: 100px;
+  right: -80px;
+  top: 3dvh;
+  height: 60px;
+  aspect-ratio: 1/1;
   
   display: grid;
   align-content: space-evenly;
   justify-items: center;
 
-  background-color: rgb(36, 109, 130);
-  box-shadow: 5px 0px 15px 0px rgb(0, 0, 0, 0.25);
+  /* background: radial-gradient(circle, rgb(36, 109, 130)60%, rgb(0, 0, 0) 180%); */
+  box-shadow: inset  0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+  background-color: rgb(25, 70, 80);
 
   transition: 0.5s;
-  border-bottom-right-radius: 50px;
-
-  border-right: solid 5px rgba(0, 0, 0, 0.75);
-  border-top: solid 5px rgba(0, 0, 0, 0.75);
-  border-bottom: solid 5px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  border: none;
 }
 .phoneLinksButtn > line{
   position: relative;
-  width: 50px;
-  height: 10px;
+  width: 30px;
+  height: 5px;
   background-color: black;
 }
 
@@ -130,7 +142,7 @@ input{
   align-items: center;
   /* gap: 25px; */
 
-  background-color: rgb(25, 70, 80);
+  background-color: rgb(30, 85, 100);
 
   transition: 0.5s;
 }
@@ -249,7 +261,7 @@ input{
 
 footer{
   position: relative;
-  width: 100vw;
+  width: 100%;
   left: 0;
   bottom: 0;
   margin-top: 100px;

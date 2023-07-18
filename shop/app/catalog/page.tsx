@@ -6,9 +6,10 @@ import './style.css'
 
 
 export default function Content() {
-  const cards = []; //3 cards
-  const cards2 = []; // 2 cards
-  let num = 3;
+  const cards = [];   // 3 cards
+  const cards2 = [];  // 2 cards
+  let num = 3;        // max amount card in one line 
+
 
 
   // generating content for wrappers. Data can also come from database tables.
@@ -97,6 +98,7 @@ export default function Content() {
             </a>
           </div>
         </div>
+        
       </nav>
       );
     }

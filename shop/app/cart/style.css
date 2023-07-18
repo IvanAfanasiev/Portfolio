@@ -1,3 +1,5 @@
+/* for page of a certain product */
+
 .cart_wrapper{
     width: 100%;
     width: clamp(250px, 95%, 1200px);
