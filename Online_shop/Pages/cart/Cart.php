@@ -2,6 +2,8 @@
 require_once "../../global.php";
 require "../../connect.php";
 
-if (!login()) //login определяет, авторизирован пользователь или нет
+if (!login())
     header('Location: ../../index.php');
 ?>
+
+<!-- this page is under development =) -->

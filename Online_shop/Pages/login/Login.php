@@ -14,26 +14,25 @@ require_once "../../global.php";
 require "../../connect.php";
 
 
-if (login()) //login определяет, авторизирован пользователь или нет
+if (login()) //determines whether the user is authorized or not
 {
-    echo 'sss';
-    $UID = $_SESSION['id']; //если пользователь авторизирован, присваиваем переменной $UID его id
-    $admin = is_admin($UID); //определяем, админ ли пользователь
+    $UID = $_SESSION['id']; //if the user is authorized, we assign his id to the $UID variable
+    $admin = is_admin($UID); //we determine whether the user is an admin
     header('Location: ../catalog/Catalog.php');
 }
 
-echo 'не авторизирован';
+echo 'not authorized';
 
 if(!empty($_POST['login']) && !empty($_POST['password']))
 {
-    $error = enter(); //функция входа на сайт
+    $error = enter(); //website login function
     var_dump($error);
-    if (count($error) == 0) //если ошибки отсутствуют, авторизируем пользователя
+    if (count($error) == 0) //if there are no errors, we authorize the user
     {
         $UID = $_SESSION['id'];
 
         $admin = is_admin($UID);
-        header('Location: ../catalog/Catalog.php'); //можно и LogIn.php   , без разницы
+        header('Location: ../catalog/Catalog.php'); //It can be "LogIn.php" also, no difference
     }
 }
 

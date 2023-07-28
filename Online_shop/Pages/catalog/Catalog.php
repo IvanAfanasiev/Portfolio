@@ -3,7 +3,7 @@ require_once "../../global.php";
 require "../../connect.php";
 
 
-if (!login()) //login определяет, авторизирован пользователь или нет
+if (!login()) //login determines whether the user is authorized or not
     header('Location: ../../index.php');
 require_once "../Header.php";
 ?>
@@ -24,6 +24,8 @@ require_once "../Header.php";
 
 <br>
 <br>
+<!-- later this will be used to upload new photos to the database -->
+
 <!--<form method="POST" action="" enctype="multipart/form-data">-->
 <!--    <input type="file" name="myimage">-->
 <!--    <input type="submit" name="submit_image" value="Upload">-->
@@ -33,7 +35,7 @@ require_once "../Header.php";
 <div class="mainContent">
 <nav class="goodsList">
 
-<!-- отображение фото с бд -->
+<!-- displaying photos from the database -->
 <?php
 $i = 0;
 $sql = "select * from product";
@@ -56,20 +58,18 @@ while($product = $res->fetch_assoc()){
                         </div>
                         <?php echo $product['name']?>
                         <div class="favourites">
-
+                            <!-- there will be different icons depending on whether the product is added to favorites -->
+                            <!-- <ion-icon name="heart"></ion-icon> -->
                             <ion-icon name="heart-dislike"></ion-icon>
                         </div>
                     </div>
                 </a>
             </div>
 <?php
-//    echo $i;
     if (($i+1) %3 == 0)
     {
         echo "</div><div class='wrapper'>";
     }
-    //    <!--                        {/* <ion-icon name="heart"></ion-icon> */}-->
-//<!--                        {/* &lt;!&ndash; or  &ndash;&gt; */}-->
 $i+=1;
 }
 echo "</div>";
@@ -78,7 +78,12 @@ echo "</div>";
 
 </nav>
 </div>
-<!-- показ фото -->
+
+
+
+
+
+<!-- showing photos -->
 <?php
 //$select_image="select * from product where id=1";
 //
@@ -90,7 +95,7 @@ echo "</div>";
 //echo"<img class='' src ='data:image/png;base64," . base64_encode($image_content) . "'>";
 //?>
 
-<!--загрузка фотографии-->
+<!--uploading a photo-->
 <?php
 //if (empty($_FILES['myimage']['tmp_name'])) return;
 //$newImg=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
@@ -107,7 +112,6 @@ echo "</div>";
 //
 //    $conn = new mysqli("localhost", "root", "", "shop");
 //    $res = $conn->query($sql);
-
 ?>
 
 

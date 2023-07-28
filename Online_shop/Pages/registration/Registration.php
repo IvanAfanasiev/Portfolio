@@ -12,7 +12,7 @@
 require_once "../../global.php";
 require "../../connect.php";
 
-//echo 'Если ввести уже существующие данные, тебя просто залогинит';
+//If you enter already existing data, you should be logged in
 
 if (isset($_POST['login'])) {
     echo 'login: '.$_POST['login'] .'<br>';
@@ -28,14 +28,14 @@ if (isset($_POST['login'])) {
     $res = $connect->query($sql);
 
 
-    //если такой пользователь уже есть - Логин
+    //if such a user already exists - Login
     if (mysqli_num_rows($res) != 0){
-        $error = enter(); //функция входа на сайт
+        $error = enter(); //login function
         echo  count($error);
         $UID = $_SESSION['id'];
 
         $admin = is_admin($UID);
-        header('Location: ../../index.php'); //можно и LogIn.php   , без разницы
+        header('Location: ../../index.php'); //It can be "LogIn.php" also, no difference
     }
     else{
         $msg = '';
@@ -51,15 +51,13 @@ if (isset($_POST['login'])) {
                         $res = $connect->query($sql);
 
 
-                        //если уже есть такой меил
+                        //if database already have such an email
                     if(mysqli_num_rows($res) == 0)
                     {
                         $login = $_POST['login'];
                         $connect->insert_id;
                         $sql = "insert into users (login, password, email, role) values('$login', '$password', '$mail', default)";
                         $res = $connect->query($sql);
-//                        $sql = "insert into user (name, surname, role, id) values('$name', '$surname', default, LAST_INSERT_ID())";
-//                        $res = $connect->query($sql);
                         $connect-> close();
 
                         header('Location: ../../index.php');
@@ -68,14 +66,12 @@ if (isset($_POST['login'])) {
                     else
                         $msg= 'This email address is already registered';
                 }
-                //не подходит под шаблон почты
+                //does not fit the mail template (preg_match)
                 else
                 {
-                    $msg = 'Wrong e-mail!';
+                    $msg = 'Wrong mail template!';
                 }
             }
-
-
         }
         echo $msg;
     }

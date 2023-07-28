@@ -4,34 +4,28 @@ session_start();
     function enter ()
     {
         $connect = new mysqli("localhost", "root", "", "shop");
-        $error = array(); //массив для ошибок
-        if (!empty($_POST['login']) && !empty($_POST['password'])) //если поля заполнены
+        $error = array(); //array for errors
+        if (!empty($_POST['login']) && !empty($_POST['password'])) //if the fields are filled
         {
             $login = $_POST['login'];
-//            $password = password_hash($_POST["password"], PASSWORD_ARGON2ID);
-            $rez = $connect->query("SELECT * FROM users WHERE login= '$login'"); //запрашивается строка из базы данных с логином, введённым пользователем
-            if (mysqli_num_rows($rez) != 0) //если нашлась одна строка, значит такой юзер существует в базе данных
+            $rez = $connect->query("SELECT * FROM users WHERE login= '$login'"); //a string is requested from the database with the username entered by the user
+            if (mysqli_num_rows($rez) != 0) //if there is one line, it means that such a user exists in the database
             {
-//                echo "<br>";
-//                echo $row['password'];
-//                echo "<br>";
-//                echo password_hash($_POST["password"], PASSWORD_ARGON2ID);
-//                echo'<br>tu<br>';
                 $row = $rez->fetch_assoc();
                 if(password_verify($_POST["password"], $row["password"]))
                 {
                     echo $login;
-                    //пишутся логин и хэшированный пароль в cookie, также создаётся переменная сессии
+                    //the login and hashed password are written in the cookie, and a session variable is also created
                     setcookie ("login", $row['login'], time() + 5000, '/');
                     setcookie ("password", md5($row['login'].$row['password']), time() + 5000, '/');
                     $_SESSION['id'] = $row['id'];   //записываем в сессию id пользователя
                 }
-                else //если пароли не совпали
+                else //if the passwords don't match
                 {
                     $error[] = "Wrong password";
                 }
             }
-            else //если такого пользователя не найдено в базе данных
+            else //if no such user is found in the database
             {
                 $error[] = "Wrong login or password";
             }
@@ -43,11 +37,9 @@ session_start();
 
 
     function login () {
-//        $connect = new mysqli("localhost", "root", "", "shop");
-
-        if (isset($_SESSION['id']))//если сесcия есть
+        if (isset($_SESSION['id']))//if there is a session
         {
-            if(isset($_COOKIE['login']) != '' && isset($_COOKIE['password'])!= '') //если cookie есть, обновляется время их жизни и возвращается true
+            if(isset($_COOKIE['login']) != '' && isset($_COOKIE['password'])!= '') //if there are cookies, their lifetime is updated and true is returned
             {
                 setcookie ("login", $_COOKIE['login'], time() + 5000, '/');
                 setcookie ("password", $_COOKIE['password'], time() + 5000, '/');
@@ -56,13 +48,13 @@ session_start();
                 return true;
 
             }
-            else //иначе добавляются cookie с логином и паролем, чтобы после перезапуска браузера сессия не слетала
+            else //otherwise, cookies with login and password are added so that the session does not crash after restarting the browser
             {
-                $rez = $connect->query("SELECT * FROM users WHERE id='{$_SESSION['id']}'"); //запрашивается строка с искомым id
+                $rez = $connect->query("SELECT * FROM users WHERE id='{$_SESSION['id']}'"); //a string with the required id is requested
 
-                if (mysqli_num_rows($rez) == 1) //если получена одна строка
+                if (mysqli_num_rows($rez) == 1) //if one line is received
                 {
-                    $row = $rez->fetch_assoc(); //она записывается в ассоциативный массив
+                    $row = $rez->fetch_assoc(); //it is written to an array
 
                     setcookie ("login", $row['login'], time()+5000, '/');
 
@@ -75,28 +67,28 @@ session_start();
                 else return false;
             }
         }
-        else //если сессии нет, проверяется существование cookie
+        else //if there is no session, the cookie existence is checked
         {
-            if(isset($_COOKIE['login']) && isset($_COOKIE['password'])) //если куки существуют, проверяется их валидность по базе данных
+            if(isset($_COOKIE['login']) && isset($_COOKIE['password'])) //if cookies exist, their validity is checked against the database
             {
-                $rez = $connect->query("SELECT * FROM users WHERE login='{$_COOKIE['login']}'"); //запрашивается строка с искомым логином и паролем
+                $rez = $connect->query("SELECT * FROM users WHERE login='{$_COOKIE['login']}'"); //a string with the desired username and password is requested
                 @$row = $rez->fetch_assoc();
 
-                if(@mysqli_num_rows($rez) == 1 && $row['password'] == $_COOKIE['password']) //если логин и пароль нашлись в базе данных
+                if(@mysqli_num_rows($rez) == 1 && $row['password'] == $_COOKIE['password']) //if the username and password were found in the database
                 {
-                    $_SESSION['id'] = $row['id']; //записываем в сесиию id
+                    $_SESSION['id'] = $row['id']; //record the id in the session
                     $id = $_SESSION['id'];
                     return true;
                 }
-                else //если данные из cookie не подошли, эти куки удаляются
+                else //if the data from the cookie does not fit, these cookies are deleted
                 {
-                    SetCookie("login", "", time() - 360000, '/');
-                    SetCookie("password", "", time() - 360000, '/');
+                    SetCookie("login", "", time() - 5000, '/');
+                    SetCookie("password", "", time() - 5000, '/');
                     return false;
 
                 }
             }
-            else //если куки не существуют
+            else //if cookies do not exist
                 return false;
         }
     }
@@ -112,13 +104,13 @@ session_start();
 
     function out () {
         session_start();
-        unset($_SESSION['id']); //удалятся переменная сессии
+        unset($_SESSION['id']); //session variable is deleted
 
-        SetCookie("login", "", time() - 360000, '/');
-        SetCookie("password", "", time() - 360000, '/');
+        SetCookie("login", "", time() - 5000, '/');
+        SetCookie("password", "", time() - 5000, '/');
 
 
-        header('Location: index.php'); //перенаправление на главную страницу сайта
+        header('Location: index.php'); //redirection to the main page of the site
     }
 
 
