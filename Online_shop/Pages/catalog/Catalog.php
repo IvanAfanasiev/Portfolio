@@ -45,7 +45,7 @@ echo "<div class='wrapper'>";
 while($product = $res->fetch_assoc()){
  ?>
             <div class='cardContainer'>
-                <a href='' class='card'>
+                <a href='../cart/Cart.php?game=<?php echo $product['name'];?>' class='card'>
                     <div class='imgContainer'>
                         <img class="cardImageBG" <?php echo "src ='data:image/png;base64," . base64_encode($product['image']) . "' "?> >
                         <img class="cardImage" src ='<?php echo "data:image/png;base64," . base64_encode($product['image'])?>' >
@@ -57,12 +57,8 @@ while($product = $res->fetch_assoc()){
                             <ion-icon name="logo-playstation"></ion-icon>
                         </div>
                         <?php echo $product['name']?>
-                        <div class="favourites">
-                            <!-- there will be different icons depending on whether the product is added to favorites -->
-                            <!-- <ion-icon name="heart"></ion-icon> -->
-                            <ion-icon name="heart-dislike"></ion-icon>
-                        </div>
                     </div>
+                    <div class="arrow"><ion-icon name="arrow-down-outline"></ion-icon></div>
                 </a>
             </div>
 <?php
@@ -118,5 +114,9 @@ echo "</div>";
 <?php
 require_once "../Footer.php";
 ?>
+
+
+
+<!--<script src="../../ButtonsFunc.js"></script>-->
 </body>
 </html>

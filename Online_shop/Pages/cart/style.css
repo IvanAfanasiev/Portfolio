@@ -1,0 +1,71 @@
+/* for page of a certain product */
+
+
+.cartContainer{
+    position: relative;
+    width: 80vw;
+    height: 450px;
+    top: 150px;
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+}
+.cart_wrapper{
+    width: 100%;
+    width: clamp(250px, 95%, 1200px);
+    /* overflow: hidden; */
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+}
+.Buy{
+    position: relative;
+    height: 45px;
+    padding: 3px 3px 3px 5px;
+    background-color: black;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+
+    border-radius: 7.5px;
+}
+.price{
+    color: white;
+    font-size: 24px;
+}
+.BuyButtn{
+    position: relative;
+    bottom: 0;
+    width: 175px;
+    height: 100%;
+    background: linear-gradient(90deg, rgb(0, 145, 0), rgb(0, 105, 0));
+
+    color: white;
+    font-size: 25px;
+
+    border-radius: 5px;
+    border: none;
+
+    transition: 0.5s;
+}
+.BuyButtn:hover{
+    background: linear-gradient(-90deg, rgb(0, 145, 0), rgb(0, 105, 0));
+}
+
+
+.cart_cardContainer{
+    position: relative;
+    width: 100%;
+    min-width: 150px;
+    background-color: rgba(216, 209, 209, 0);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
+

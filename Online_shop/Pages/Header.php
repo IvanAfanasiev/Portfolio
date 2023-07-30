@@ -1,9 +1,11 @@
 <?php
+require_once "../../global.php";
+//<!--                phone_links_active-->
+
 echo <<< HEADER
-<header>
+        <header>
             <div class="header">
                 <nav class="phone_links"> 
-<!--                phone_links_active-->
                     <div class='linkWrapper'>
                         <a onClick="ActivateMenu" href="/">Home</a>
                         <a onClick="ActivateMenu" href="">Catalog</a>
@@ -21,8 +23,12 @@ echo <<< HEADER
 
                 <nav class="links">
                     <a href="">Home</a>
-                    <a href="">Catalog</a>
-                    <a href="">Favorites</a>
+                    <a href="../catalog/Catalog.php">Catalog</a>
+                    <a href="../favorites/Favorites.php">Favorites</a>
+ HEADER;
+    if (is_admin($_SESSION['id']))
+        echo '<a href="../CRUD/ProductCrud.php">Change products</a>';
+echo <<< HEADER
                 </nav>
                 
                 <div class="searchPanel">
@@ -35,4 +41,5 @@ echo <<< HEADER
                 </div>
             </div>
         </header>
-HEADER;
+
+ HEADER;

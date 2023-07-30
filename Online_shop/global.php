@@ -1,6 +1,5 @@
 <?php
 session_start();
-
     function enter ()
     {
         $connect = new mysqli("localhost", "root", "", "shop");
@@ -39,7 +38,7 @@ session_start();
     function login () {
         if (isset($_SESSION['id']))//if there is a session
         {
-            if(isset($_COOKIE['login']) != '' && isset($_COOKIE['password'])!= '') //if there are cookies, their lifetime is updated and true is returned
+            if(!empty(isset($_COOKIE['login'])) && !empty(isset($_COOKIE['password']))) //if there are cookies, their lifetime is updated and true is returned
             {
                 setcookie ("login", $_COOKIE['login'], time() + 5000, '/');
                 setcookie ("password", $_COOKIE['password'], time() + 5000, '/');
@@ -50,6 +49,7 @@ session_start();
             }
             else //otherwise, cookies with login and password are added so that the session does not crash after restarting the browser
             {
+                $connect = new mysqli("localhost", "root", "", "shop");
                 $rez = $connect->query("SELECT * FROM users WHERE id='{$_SESSION['id']}'"); //a string with the required id is requested
 
                 if (mysqli_num_rows($rez) == 1) //if one line is received
@@ -58,7 +58,7 @@ session_start();
 
                     setcookie ("login", $row['login'], time()+5000, '/');
 
-                    setcookie ("password", $_COOKIE['password'], time() + 5000, '/');
+                    setcookie ("password", $row['password'], time() + 5000, '/');
 
                     $id = $_SESSION['id'];
                     return true;
@@ -71,6 +71,7 @@ session_start();
         {
             if(isset($_COOKIE['login']) && isset($_COOKIE['password'])) //if cookies exist, their validity is checked against the database
             {
+                $connect = new mysqli("localhost", "root", "", "shop");
                 $rez = $connect->query("SELECT * FROM users WHERE login='{$_COOKIE['login']}'"); //a string with the desired username and password is requested
                 @$row = $rez->fetch_assoc();
 
