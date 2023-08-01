@@ -2,6 +2,14 @@
 require_once "../../global.php";
 //<!--                phone_links_active-->
 
+
+
+
+echo <<< STYLE
+<div>
+        <style id="themeStyle">@layer pinky, day, night;</style>
+</div>
+STYLE;
 echo <<< HEADER
         <header>
             <div class="header">
@@ -22,15 +30,21 @@ echo <<< HEADER
 
 
                 <nav class="links">
-                    <a href="">Home</a>
+                    <a href="../catalog/Catalog.php">Home</a>
                     <a href="../catalog/Catalog.php">Catalog</a>
                     <a href="../favorites/Favorites.php">Favorites</a>
  HEADER;
     if (is_admin($_SESSION['id']))
         echo '<a href="../CRUD/ProductCrud.php">Change products</a>';
 echo <<< HEADER
+                    <a class="logOut" href="../LogOut.php">Log out</a>
+                <button onclick="ChangeThemeStyle()" class="Theme">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="circle"></div>
+                </button>
                 </nav>
-                
                 <div class="searchPanel">
                         <input  class="search"
                                 placeholder="I looking for..."
@@ -40,6 +54,7 @@ echo <<< HEADER
                         <ion-icon name="search-sharp"></ion-icon>
                 </div>
             </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src='../../ButtonsFunc.js'></script>
         </header>
-
  HEADER;

@@ -1,4 +1,38 @@
 /* Header, footer and some media queries */
+@layer day {
+  :root{
+    --main-bg-color: rgb(241, 240, 206);
+    --header-bg-color: rgb(153, 168, 128);
+  }
+  .circle{
+    position: absolute;
+    top: 0;
+    left: 70%;
+  }
+}
+@layer night {
+  :root{
+    --main-bg-color: rgb(35, 35, 40);
+    --header-bg-color: rgb(25, 70, 80);
+  }
+  .circle{
+    position: absolute;
+    top: 0;
+    left: -10%;
+  }
+}
+@layer pinky {
+  :root{
+    --main-bg-color: rgb(124, 67, 124);
+    --header-bg-color: rgb(55, 25, 80);
+  }
+  .circle{
+    position: absolute;
+    top: 65%;
+    left: 27.5%;
+  }
+}
+
 
 
 html{
@@ -8,7 +42,7 @@ body, .mainContent{
   padding: 0;
   margin: 0;
   min-height: 100vh;
-  background-color: #252328;
+  background-color: var(--main-bg-color);
   font-weight: 500;
   /*margin-top: 150px;*/
 }
@@ -33,6 +67,19 @@ header:hover > .header{
   top: 0dvh;
   transform: translateY(0);
 }
+form{
+  margin:0;
+  padding: 0;
+}
+.logOut{
+  position: relative;
+  background-color: transparent;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-size: clamp(14px, 2vw, 28px);
+  pointer-events: fill;
+}
 input{
   box-sizing: border-box;
   border: none;
@@ -44,7 +91,8 @@ input{
   top: 0dvh;
   transform: translateY(-100px);
   left: 0;
-  background-color: rgb(25, 70, 80);
+  /*background-color: rgb(25, 70, 80);*/
+  background-color: var(--header-bg-color);
 
   transition: 0.5s;
   box-shadow: 5px 5px 15px 5px rgb(0, 0, 0, 0.3);
@@ -120,7 +168,6 @@ input{
   align-content: space-evenly;
   justify-items: center;
 
-  /* background: radial-gradient(circle, rgb(36, 109, 130)60%, rgb(0, 0, 0) 180%); */
   box-shadow: inset  0px 0px 5px 5px rgba(0, 0, 0, 0.2);
   background-color: rgb(25, 70, 80);
 
@@ -168,12 +215,56 @@ input{
 
   border-radius: 50px;
 }
+
+
+
+.Theme{
+  position: relative;
+  width: 75px;
+  aspect-ratio: 1/1;
+  background-color: transparent;
+  border: none;
+}
+.Theme > .circle{
+  width: 45%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--main-bg-color);
+
+  transition: 0.5s;
+}
+.Theme > .line{
+  position: absolute;
+  background-color: gray;
+  height: 5px;
+  border-radius: 15px;
+}
+.line:nth-child(1){
+  top: 12%;
+  left: 3%;
+  width: 94%;
+}
+.line:nth-child(2){
+  top: 51%;
+  right: -19%;
+  rotate: -60deg;
+  width: 93%;
+}
+.line:nth-child(3){
+  top: 51%;
+  left: -19%;
+  rotate: 60deg;
+  width: 93%;
+}
+
+
 .searchPanel{
   position: relative;
   right: 30px;
-  width: clamp(350px, 100%, 400px);
+  width: clamp(150px, 100%, 300px);
   height: 50px;
-  background: linear-gradient(90deg, rgb(15, 55, 60), rgb(35, 75, 85));
+  background: linear-gradient(90deg, var(--main-bg-color), rgba(255, 255, 255, 0.05));
   border-radius: 50px;
   overflow: hidden;
   display: flex;
@@ -238,32 +329,31 @@ footer{
 }
 
 
-@media (min-width: 750px) {
+@media (max-width: 950px) {
+  .searchPanel{
+    width: 50px;
+  }
+  .searchPanel > button{
+    display: none;
+  }
+  .searchPanel:hover{
+    width: 500px;
+  }
+}
+
+@media (min-width: 750px){
   .phone_links{
     display: none;
   }
 }
-
 @media (max-width: 750px) {
     .header{
       top: 0 !important;
       padding-left: 75px;
       box-sizing: border-box;
     }
-    .searchPanel{
-      width: 50px;
-    }
     .searchPanel > ion-icon{
       pointer-events: none;
-    }
-    .searchPanel > button{
-      display: none;
-    }
-    .searchPanel:hover{
-      width: 500px;
-    }
-    .Side_Bar{
-      display: none;
     }
     .links{
       display: none;

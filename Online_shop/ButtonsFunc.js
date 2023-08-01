@@ -1,21 +1,23 @@
-function OpenMobileMenu(){
-    // $('.phone_menu').toggleClass('phone_menuActive');
-    // $('.menu').toggleClass('menuActive');
-    // $('.menu-ico').toggleClass('menu-icoActive');
-    // $('.menu-ico li').toggleClass('menu_linesActive');
-    // $(this).toggleClass('Cities_Active');
-    console.log("ass");
+$('document').ready(function(){
+    currLayer = localStorage.getItem("themeLayer");
+    SetTheme();
+});
+
+const layers = ["pinky", "day", "night"];
+let currLayer = 0;
+
+function ChangeThemeStyle(){
+    currLayer = (currLayer+1)%3;
+    SetTheme();
+    console.log(currLayer);
+    localStorage.setItem("themeLayer", currLayer);
 }
-function AddToFavorites(){
-    console.log("pipawsia");
+function SetTheme(){
+    var out = '@layer ';
+    out +=layers[currLayer]+', ';
+    out +=layers[(currLayer+1)%3]+', ';
+    out +=layers[(currLayer+2)%3];
+    out +=';'
+    $('#themeStyle').html(out);
 }
 
-function loadStyle(){
-    // $.getJSON('../js/product_classes.json', function (data) {
-    //     console.log(data);
-    //     var out = 'nadpiś';
-    //
-    //
-    //     $('#Style').html(out);
-    // })
-}

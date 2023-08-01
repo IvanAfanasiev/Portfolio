@@ -117,6 +117,5 @@ require_once "../Footer.php";
 
 
 
-<!--<script src="../../ButtonsFunc.js"></script>-->
 </body>
 </html>

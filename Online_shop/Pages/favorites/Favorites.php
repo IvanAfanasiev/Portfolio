@@ -21,9 +21,8 @@ require_once "../Header.php";
 </head>
 <?php
 if ( isset($_POST['changeFavorites']) ) {
-//    die($_POST['changeFavorites']);
     $sql = "delete from favorites 
-            where product_id = '$_POST[changeFavorites]'";
+            where id = '$_POST[changeFavorites]'";
 
     $res = $connect->query($sql);
 }
@@ -41,15 +40,7 @@ if ( isset($_POST['changeFavorites']) ) {
 
 
 <div id="result"></div>
-<script>
-    $('#ajax-form').submit(function(e) {
-        var htmlData = html(data);
-        e.preventDefault();
-        var method = $('#ajax-form').attr('method');
-        var url = $('#ajax-form').attr('url');
-        $[method](url, $('#ajax-form').serialize(), function(data) { $('#result').html(data); });
-    });
-</script>
+
 
 
 <div class="mainContent">
@@ -65,8 +56,7 @@ if ( isset($_POST['changeFavorites']) ) {
         while($product = $res->fetch_assoc()){
             ?>
             <div class='cardContainer'>
-<!--            <a href='' class='card'>-->
-                <div class='card'>
+            <a href='../cart/Cart.php?game=<?php echo $product['name'];?>' class='card'>
                     <div class='imgContainer'>
                         <img class="cardImageBG" <?php echo "src ='data:image/png;base64," . base64_encode($product['image']) . "' "?> >
                         <img class="cardImage" src ='<?php echo "data:image/png;base64," . base64_encode($product['image'])?>' >
@@ -78,16 +68,13 @@ if ( isset($_POST['changeFavorites']) ) {
                             <ion-icon name="logo-playstation"></ion-icon>
                         </div>
                         <?php echo $product['name']?>
-                        <form id="ajax-form" method="POST" action="">
+                        <form method="POST" action="">
                             <button class="favourites" type="submit" name="changeFavorites" value="<?php echo $product['id'] ?>">
-                                <!-- there will be different icons depending on whether the product is added to favorites -->
-                                 <ion-icon name="heart"></ion-icon>
-<!--                                <ion-icon name="heart-dislike"></ion-icon>-->
+                                <ion-icon name="heart"></ion-icon>
                             </button>
                         </form>
                     </div>
-<!--            </a>-->
-                </div>
+            </a>
             </div>
             <?php
             if (($i+1) %3 == 0)
@@ -103,11 +90,6 @@ if ( isset($_POST['changeFavorites']) ) {
 </nav>
 </div>
 
-<form id="ajax-form" action="" method="post">
-    <input type="text" name="changeFavorites">
-    <input type="submit">
-</form>
-
 
 
 
@@ -119,6 +101,5 @@ require_once "../Footer.php";
 
 
 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </body>
 </html>
