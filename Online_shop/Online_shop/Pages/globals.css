@@ -1,9 +1,10 @@
 /* Header, footer and some media queries */
 @layer day {
   :root{
-    --main-bg-color: rgb(241, 240, 206);
-    --second-main-color: rgb(153, 168, 128);
-    --header-bg-color: rgb(73, 46, 46);
+    --main-bg-color: rgb(240, 240, 205);
+    --second-main-color: rgb(155, 170, 130);
+    --header-bg-color: rgb(75, 45, 45);
+    --header-shadow-color: rgba(75, 45, 45, 0.75);
     --font-color: rgb(150, 90, 90);
   }
   .circle{
@@ -17,6 +18,7 @@
     --main-bg-color: rgb(35, 35, 40);
     --second-main-color: rgb(25, 70, 80);
     --header-bg-color: rgb(143, 163, 164);
+    --header-shadow-color: rgba(143, 163, 164, 0.25);
     --font-color: rgb(46, 108, 95);
   }
   .circle{
@@ -30,6 +32,7 @@
     --main-bg-color: rgb(125, 65, 125);
     --second-main-color: rgb(107, 0, 105);
     --header-bg-color: rgb(55, 25, 80);
+    --header-shadow-color: rgba(253, 12, 104, 0.25);
     --font-color: rgb(238, 192, 144);
   }
   .circle{

@@ -36,7 +36,7 @@ function SetHeaderStyle(){
     console.log(body.getBoundingClientRect().y);
     if (body.getBoundingClientRect().y < 0)
         header.style.cssText = `background-color: var(--header-bg-color);
-                                box-shadow: 5px 5px 15px 5px rgb(0, 0, 0, 0.3);`;
+                                box-shadow: 5px 5px 15px 5px var(--header-shadow-color);`;
     else
         header.style.cssText = `background-color: rgba(0, 0, 0, 0);`;
 
