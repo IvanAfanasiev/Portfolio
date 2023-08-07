@@ -10,8 +10,10 @@ window.onload = function(){
     const mountains1 = document.querySelector(".mountains1");
     const trees = document.querySelector(".trees");
     const sun = document.querySelector(".sun");
-    const pic = document.querySelector(".pic");
-    const point = document.querySelector(".Point");
+    const line = document.querySelector(".holding");
+    const point = document.getElementById("end");
+
+
 
     const mountains1Speed = 35;
     const mountains2Speed = 90;
@@ -25,39 +27,43 @@ window.onload = function(){
     let posX = 0, posY = 0;
     let coordX = 0, coordY = 0;
 
-    let windY = window.pageYOffset;
+    let windY = window.scrollY;
 
     function SetMouseStyle(){
         
         // element.getBoundingClientRect().y //relative to the viewport
         // element.getBoundingClientRect().y+window.pageYOffset //relative to the document
-        if(pic.getBoundingClientRect().y < window.pageYOffset){
-            pic.style.cssText = `position: fixed; 
-                                 left: 20px;
-                                 top:200px;`;
-        }
-        if(point.getBoundingClientRect().y < pic.offsetHeight + pic.getBoundingClientRect().y){
-            pic.style.cssText = `position: absolute;
-                                 top: ${(1100 - pic.offsetHeight + 200)}px`;
-            point.style.cssText = `color: rgb(230, 230, 230);`;
-            point.classList.add("slideTop");
-        }
-        else if (main_content.getBoundingClientRect().y >= 10){
-            pic.style.cssText = `position: absolute;`;
-        }
+
+
+        // not used yet
+
+        // if(line.getBoundingClientRect().y < window.scrollY){
+        //     line.style.cssText = `position: fixed; 
+        //                          top:150px;
+        //                          left: 50%;`;
+        // }
+        // if(point.getBoundingClientRect().y < line.offsetHeight + line.getBoundingClientRect().y){
+        //     line.style.cssText = `position: fixed;
+        //                           top: ${(point.getBoundingClientRect().y - line.offsetHeight)}px;`;
+        // }
+        // else if (main_content.getBoundingClientRect().y >= 0){
+        //     line.style.cssText = `position: absolute;`;
+        // }
+
+
 
         const distX = coordX - posX;
         const distY = coordY - posY;
 
-        windY = window.pageYOffset;
+        windY = window.scrollY;
 
         posX = posX + (distX * overall_speed)
         posY = posY + (distY * overall_speed)
 
-        mountains3.style.cssText = `transform: translate(${posX/mountains3Speed}%,${posY/mountains3Speed}%);`;
-        mountains2.style.cssText = `transform: translate(${posX/mountains2Speed}%,${posY/mountains2Speed}%);`;
-        mountains1.style.cssText = `transform: translate(${posX/mountains1Speed}%,${posY/mountains1Speed}%);`;
-        trees.style.cssText = `transform: translate(${posX/treesSpeed}%,${posY/treesSpeed}%);`;
+        mountains3.style.cssText = `transform: translate(${-posX/mountains3Speed}%,${-posY/mountains3Speed}%);`;
+        mountains2.style.cssText = `transform: translate(${-posX/mountains2Speed}%,${-posY/mountains2Speed}%);`;
+        mountains1.style.cssText = `transform: translate(${-posX/mountains1Speed}%,${-posY/mountains1Speed}%);`;
+        trees.style.cssText = `transform: translate(${-posX/treesSpeed}%,${-posY/treesSpeed}%);`;
     
         requestAnimationFrame(SetMouseStyle);
     }
@@ -81,7 +87,7 @@ window.onload = function(){
         threasholdSets.push(i);
     }
     const callback = function(etries, observer){
-        const scrollTopPercent = window.pageYOffset/parall.offsetHeight*100;
+        const scrollTopPercent = window.scrollY/parall.offsetHeight*100;
         SetParallStyle(scrollTopPercent);
     }
     const observer = new IntersectionObserver(callback, {
