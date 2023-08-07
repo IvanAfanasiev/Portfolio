@@ -21,3 +21,24 @@ function SetTheme(){
     $('#themeStyle').html(out);
 }
 
+const menu = document.querySelector(".phone_links");
+
+function ActivateMenu(){
+    menu.classList.toggle("phone_links_active");
+}
+
+const body = document.querySelector("body");
+const header = document.querySelector(".header");
+
+SetHeaderStyle();
+function SetHeaderStyle(){
+
+    console.log(body.getBoundingClientRect().y);
+    if (body.getBoundingClientRect().y < 0)
+        header.style.cssText = `background-color: var(--header-bg-color);
+                                box-shadow: 5px 5px 15px 5px var(--header-shadow-color);`;
+    else
+        header.style.cssText = `background-color: rgba(0, 0, 0, 0);`;
+
+    requestAnimationFrame(SetHeaderStyle);
+}

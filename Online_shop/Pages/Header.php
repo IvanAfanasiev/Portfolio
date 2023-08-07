@@ -19,7 +19,7 @@ echo <<< HEADER
                         <a onClick="ActivateMenu" href="">Catalog</a>
                         <a onClick="ActivateMenu" href="">Favorites</a>
                     </div> 
-                    <button class="phoneLinksButtn" onClick="ActivateMenu">
+                    <button class="phoneLinksButtn" onClick="ActivateMenu()">
                         <line></line>
                         <line></line>
                         <line></line>
@@ -38,13 +38,13 @@ echo <<< HEADER
         echo '<a href="../CRUD/ProductCrud.php">Change products</a>';
 echo <<< HEADER
                     <a class="logOut" href="../LogOut.php">Log out</a>
+                </nav>
                 <button onclick="ChangeThemeStyle()" class="Theme">
                     <div class="line"></div>
                     <div class="line"></div>
                     <div class="line"></div>
                     <div class="circle"></div>
                 </button>
-                </nav>
                 <div class="searchPanel">
                         <input  class="search"
                                 placeholder="I looking for..."

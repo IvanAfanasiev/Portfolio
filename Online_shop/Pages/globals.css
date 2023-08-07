@@ -1,8 +1,11 @@
 /* Header, footer and some media queries */
 @layer day {
   :root{
-    --main-bg-color: rgb(241, 240, 206);
-    --header-bg-color: rgb(153, 168, 128);
+    --main-bg-color: rgb(240, 240, 205);
+    --second-main-color: rgb(155, 170, 130);
+    --header-bg-color: rgb(75, 45, 45);
+    --header-shadow-color: rgba(75, 45, 45, 0.75);
+    --font-color: rgb(150, 90, 90);
   }
   .circle{
     position: absolute;
@@ -13,7 +16,10 @@
 @layer night {
   :root{
     --main-bg-color: rgb(35, 35, 40);
-    --header-bg-color: rgb(25, 70, 80);
+    --second-main-color: rgb(25, 70, 80);
+    --header-bg-color: rgb(143, 163, 164);
+    --header-shadow-color: rgba(143, 163, 164, 0.25);
+    --font-color: rgb(46, 108, 95);
   }
   .circle{
     position: absolute;
@@ -23,8 +29,11 @@
 }
 @layer pinky {
   :root{
-    --main-bg-color: rgb(124, 67, 124);
+    --main-bg-color: rgb(125, 65, 125);
+    --second-main-color: rgb(107, 0, 105);
     --header-bg-color: rgb(55, 25, 80);
+    --header-shadow-color: rgba(253, 12, 104, 0.25);
+    --font-color: rgb(238, 192, 144);
   }
   .circle{
     position: absolute;
@@ -32,6 +41,7 @@
     left: 27.5%;
   }
 }
+
 
 
 
@@ -44,7 +54,7 @@ body, .mainContent{
   min-height: 100vh;
   background-color: var(--main-bg-color);
   font-weight: 500;
-  /*margin-top: 150px;*/
+  font-family: Verdana, Helvetica, Arial, sans-serif;
 }
 input{
   box-sizing: border-box;
@@ -60,12 +70,7 @@ header{
   width: 100vw;
   left: 0;
   top: 0;
-  border-bottom:  dashed rgba(255, 0, 0, 0.1) 2px ;
   z-index: 1;
-}
-header:hover > .header{
-  top: 0dvh;
-  transform: translateY(0);
 }
 form{
   margin:0;
@@ -73,12 +78,8 @@ form{
 }
 .logOut{
   position: relative;
-  background-color: transparent;
-  border-radius: 15px;
-  border: none;
-  color: white;
+  color: var(--font-color);
   font-size: clamp(14px, 2vw, 28px);
-  pointer-events: fill;
 }
 input{
   box-sizing: border-box;
@@ -89,18 +90,13 @@ input{
   width: 100%;
   height: 100px;
   top: 0dvh;
-  transform: translateY(-100px);
   left: 0;
-  /*background-color: rgb(25, 70, 80);*/
-  background-color: var(--header-bg-color);
-
   transition: 0.5s;
-  box-shadow: 5px 5px 15px 5px rgb(0, 0, 0, 0.3);
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .Logo{
   position: relative;
   left: 0;
@@ -110,17 +106,20 @@ input{
 .links{
   position: relative;
   width: 50%;
-  height: 100%;
-  left: 0;
+  left: -50px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 .links > a{
+  position: relative;
   text-decoration: none;
-  color: white;
-  font-size: clamp(14px, 2vw, 28px);  
+  color: var(--font-color);
+  font-size: clamp(12px, 1vw, 18px);
+  font-weight: bold;
 }
+
+
 .phone_links{
   position: absolute;
   top: 0dvh;
@@ -138,7 +137,7 @@ input{
 .phone_links_active > .phoneLinksButtn{
   transform: translateX(-100px);
   box-shadow: inset  0px 0px 5px 5px rgb(255, 255, 255, 0.2);
-  background-color: rgb(30, 85, 100);
+  background-color: var(--header-bg-color);
 }
 .phoneLinksButtn > line{
   transition: 0.5s;
@@ -169,7 +168,7 @@ input{
   justify-items: center;
 
   box-shadow: inset  0px 0px 5px 5px rgba(0, 0, 0, 0.2);
-  background-color: rgb(25, 70, 80);
+  background-color: var(--header-bg-color);
 
   transition: 0.5s;
   border-radius: 10px;
@@ -194,14 +193,15 @@ input{
   align-items: center;
   /* gap: 25px; */
 
-  background-color: rgb(30, 85, 100);
+  background-color: var(--header-bg-color);
 
   transition: 0.5s;
 }
 .linkWrapper > a{
   position: relative;
   width: 80%;
-  background-color: whitesmoke;
+  background-color: var(--font-color);
+  box-shadow: inset  0px 0px 10px 5px rgb(0, 0, 0, 0.25);
   text-decoration: none;
   color: black;
   font-size: clamp(30px, 5vw, 58px);  
@@ -221,6 +221,7 @@ input{
 .Theme{
   position: relative;
   width: 75px;
+  left: -50px;
   aspect-ratio: 1/1;
   background-color: transparent;
   border: none;
@@ -231,6 +232,7 @@ input{
   border-radius: 50%;
   border: none;
   background-color: var(--main-bg-color);
+  box-shadow: 0px 0px 10px 5px rgb(0, 0, 0, 0.5);
 
   transition: 0.5s;
 }
@@ -262,7 +264,7 @@ input{
 .searchPanel{
   position: relative;
   right: 30px;
-  width: clamp(150px, 100%, 300px);
+  width: clamp(100px, 100%, 250px);
   height: 50px;
   background: linear-gradient(90deg, var(--main-bg-color), rgba(255, 255, 255, 0.05));
   border-radius: 50px;
