@@ -6,8 +6,8 @@ if (!login())
     header('Location: ../../index.php');
     require_once "../Header.php";
 ?>
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="../../images/favico.png">
@@ -18,6 +18,7 @@ if (!login())
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Document</title>
 </head>
+<body>
 
 
 
@@ -35,11 +36,11 @@ elseif ( isset($_POST['addFavorites']) ) {
             VALUES (NULL, '$_SESSION[id]', '$_POST[addFavorites]')";
     $res = $connect->query($sql);
 }
-//?>
+?>
 
 
 <?php
-    $sql = "select * from product where name = '$_GET[game]'";
+    $sql = "select * from product where id = '$_GET[game]'";
     $res = $connect->query($sql);
     $product = $res->fetch_assoc();
     $newPrice = 0;
@@ -49,6 +50,9 @@ elseif ( isset($_POST['addFavorites']) ) {
         $newPrice = number_format((float)round( $newPrice ,2),2,'.',',');
     }
 ?>
+<div class="mainContent">
+
+
 <div class='Container'>
     <div class="name"><?php echo"$product[name]"?>!!!</div>
     <div class="wrapper">
@@ -61,7 +65,7 @@ elseif ( isset($_POST['addFavorites']) ) {
                 <div class="description">
                     A brief (or not) description of the game.
                     Perhaps some other information such as average rating, price or number of downloads
-                    asds
+                    <?php echo '<br>'; echo $product['description'];?>
                 </div>
                 <div class="btnns">
                     <div class="Buy">
@@ -102,11 +106,22 @@ elseif ( isset($_POST['addFavorites']) ) {
 
                     </form>
                 </div>
+                <?php
+                if(is_admin($_SESSION['id'])){
+                    echo '<a href="../editProduct/EditProduct.php?prdctid='.$product['id'].'" class="edit"><ion-icon name="create"></ion-icon></a>';
+                }
+                ?>
             </div>
         </div>
     </div>
 
 </div>
 
+</div>
+
+
+<?php
+require_once "../Footer.php";
+?>
 </body>
 </html>

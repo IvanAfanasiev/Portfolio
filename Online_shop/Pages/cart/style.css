@@ -3,7 +3,6 @@
 .Container{
     position: relative;
     width: 100vw;
-    top: 150px;
     /*background-color: gray;*/
     display: flex;
     flex-direction: column;
@@ -47,7 +46,6 @@
 .cardContainer{
     position: relative;
     width: 350px;
-    background-color: rgba(216, 209, 209, 0);
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     display: flex;
@@ -58,7 +56,8 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: rgb(74, 74, 74, 1);
+    /*background-color: rgb(74, 74, 74, 1);*/
+    background-color: var(--second-main-color);
     transition: 0.25s;
 
     padding: 15px;
@@ -73,9 +72,9 @@
 }
 .name{
     padding: 15px;
-    color: white;
     font-size: 48px;
     font-weight: 600;
+    color: var(--font-color);
 }
 .btnns{
     position: relative;
@@ -89,7 +88,7 @@
     height: 25px;
     display: flex;
     gap: 15px;
-    color: rgb(175, 175, 175);
+    color: var(--font-color);
     font-size: 18px;
 }
 .description{
@@ -193,7 +192,7 @@
     position: relative;
     width: 40px;
     aspect-ratio: 1/1;
-    background: linear-gradient(145deg, #d2d2d2, #bebebe);
+    background: linear-gradient(145deg, #d2d2d2, #a0a0a0);
     box-shadow:  5px 5px 25px rgba(255, 125, 125, 0.5),
     -5px -5px 25px #787a7a;
     border-radius: 5px;
@@ -212,6 +211,18 @@
     font-size: 24px;
     color: rgb(170, 170, 170);
 }
+.edit{
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    font-size: 40px;
+    aspect-ratio: 1/1;
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+}
+
+
 @media (max-width: 950px) {
     .imgContainer, .cardContainer, .wrapper{
         width: 100%;

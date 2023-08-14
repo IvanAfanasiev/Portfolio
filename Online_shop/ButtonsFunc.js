@@ -32,8 +32,7 @@ const header = document.querySelector(".header");
 
 SetHeaderStyle();
 function SetHeaderStyle(){
-
-    console.log(body.getBoundingClientRect().y);
+    // console.log(body.getBoundingClientRect().y);
     if (body.getBoundingClientRect().y < 0)
         header.style.cssText = `background-color: var(--header-bg-color);
                                 box-shadow: 5px 5px 15px 5px var(--header-shadow-color);`;
@@ -41,4 +40,17 @@ function SetHeaderStyle(){
         header.style.cssText = `background-color: rgba(0, 0, 0, 0);`;
 
     requestAnimationFrame(SetHeaderStyle);
+}
+
+function ShowImg(){
+    const inpt = document.getElementById("ImgInpt");
+    const fileName = document.getElementById("filename");
+    let name = inpt.value.split('\\');
+    fileName.innerHTML = (name[name.length-1]);
+}
+
+
+function ClearSearchPanel(){
+    const searchField = document.querySelector(".search");
+    searchField.value = "";
 }

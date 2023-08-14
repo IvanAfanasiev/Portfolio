@@ -15,9 +15,13 @@ echo <<< HEADER
             <div class="header">
                 <nav class="phone_links"> 
                     <div class='linkWrapper'>
-                        <a onClick="ActivateMenu" href="/">Home</a>
-                        <a onClick="ActivateMenu" href="">Catalog</a>
-                        <a onClick="ActivateMenu" href="">Favorites</a>
+                        <a onClick="ActivateMenu" href="../catalog/Catalog.php">Catalog</a>
+                        <a onClick="ActivateMenu" href="../favorites/Favorites.php">Favorites</a>
+HEADER;
+if (is_admin($_SESSION['id']))
+    echo '<a href="../addNew/AddProduct.php">ADD new products</a>';
+echo <<< HEADER
+                    <a class="logOut" href="../LogOut.php">Log out</a>
                     </div> 
                     <button class="phoneLinksButtn" onClick="ActivateMenu()">
                         <line></line>
@@ -30,12 +34,11 @@ echo <<< HEADER
 
 
                 <nav class="links">
-                    <a href="../catalog/Catalog.php">Home</a>
                     <a href="../catalog/Catalog.php">Catalog</a>
                     <a href="../favorites/Favorites.php">Favorites</a>
  HEADER;
     if (is_admin($_SESSION['id']))
-        echo '<a href="../CRUD/ProductCrud.php">Change products</a>';
+        echo '<a href="../addNew/AddProduct.php">ADD new products</a>';
 echo <<< HEADER
                     <a class="logOut" href="../LogOut.php">Log out</a>
                 </nav>
@@ -45,16 +48,24 @@ echo <<< HEADER
                     <div class="line"></div>
                     <div class="circle"></div>
                 </button>
-                <div class="searchPanel">
-                        <input  class="search"
-                                placeholder="I looking for..."
-                                value=""
-                                onChange=""> 
-                        <button onClick="ClearPanel" class="close-circle"><ion-icon name="close-circle-outline"></ion-icon></button>
-                        <ion-icon name="search-sharp"></ion-icon>
-                </div>
+                    <div class="searchPanel">
+                            <form method="POST" action="">
+                                <input  class="search"
+                                    placeholder="I looking for..."
+                                    name="findBy"
+HEADER;
+                                    if (isset($_POST['findBy']))
+                                        echo 'value="'.$_POST['findBy'].'"';
+                                    else
+                                        echo 'value=""';
+echo <<< HEADER
+                                >
+                            </form>
+                            <button onClick="ClearSearchPanel()" class="close-circle"><ion-icon name="close-circle-outline"></ion-icon></button>
+                            <ion-icon name="search-sharp"></ion-icon>
+                    </div>
             </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src='../../ButtonsFunc.js'></script>
         </header>
- HEADER;
+HEADER;

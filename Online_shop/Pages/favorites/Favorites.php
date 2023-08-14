@@ -31,13 +31,6 @@ if ( isset($_POST['changeFavorites']) ) {
 
 <br>
 <br>
-<!-- later this will be used to upload new photos to the database -->
-
-<!--<form method="POST" action="" enctype="multipart/form-data">-->
-<!--    <input type="file" name="myimage">-->
-<!--    <input type="submit" name="submit_image" value="Upload">-->
-<!--</form>-->
-
 
 <div id="result"></div>
 
@@ -48,15 +41,21 @@ if ( isset($_POST['changeFavorites']) ) {
         <!-- displaying photos from the database -->
         <?php
         $i = 0;
-        $sql = "select * from product p inner join
+        if (!isset($_POST['findBy']))
+            $sql = "select * from product p inner join
                 favorites f on p.id = f.product_id where f.user_id = '$_SESSION[id]'";
+        else
+            $sql = "select * from product p inner join
+                favorites f on p.id = f.product_id where f.user_id = '$_SESSION[id]' and name like '%$_POST[findBy]%'";
+
+
 
         $res = $connect->query($sql);
         echo "<div class='wrapper'>";
         while($product = $res->fetch_assoc()){
             ?>
             <div class='cardContainer'>
-            <a href='../cart/Cart.php?game=<?php echo $product['name'];?>' class='card'>
+            <a href='../cart/Cart.php?game=<?php echo $product['product_id'];?>' class='card'>
                     <div class='imgContainer'>
                         <img class="cardImageBG" <?php echo "src ='data:image/png;base64," . base64_encode($product['image']) . "' "?> >
                         <img class="cardImage" src ='<?php echo "data:image/png;base64," . base64_encode($product['image'])?>' >

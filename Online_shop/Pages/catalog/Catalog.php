@@ -24,37 +24,44 @@ require_once "../Header.php";
 
 <br>
 <br>
-<!-- later this will be used to upload new photos to the database -->
 
-<!--<form method="POST" action="" enctype="multipart/form-data">-->
-<!--    <input type="file" name="myimage">-->
-<!--    <input type="submit" name="submit_image" value="Upload">-->
-<!--</form>-->
 
 
 <div class="mainContent">
 <nav class="goodsList">
 
-<!-- displaying photos from the database -->
+<!-- displaying goods from the database -->
 <?php
+
 $i = 0;
-$sql = "select * from product";
+if (!isset($_POST['findBy'])) {
+    $sql = "select * from product";
+}
+else{
+    $sql = "select * from product where name like '%$_POST[findBy]%'";
+}
+
 
 $res = $connect->query($sql);
 echo "<div class='wrapper'>";
 while($product = $res->fetch_assoc()){
  ?>
             <div class='cardContainer'>
-                <a href='../cart/Cart.php?game=<?php echo $product['name'];?>' class='card'>
+                <a href='../cart/Cart.php?game=<?php echo $product['id'];?>' class='card'>
                     <div class='imgContainer'>
                         <img class="cardImageBG" <?php echo "src ='data:image/png;base64," . base64_encode($product['image']) . "' "?> >
                         <img class="cardImage" src ='<?php echo "data:image/png;base64," . base64_encode($product['image'])?>' >
                     </div>
                     <div class="description">
                         <div class="platforms">
-                            <ion-icon name="logo-windows"></ion-icon>
-                            <ion-icon name="logo-xbox"></ion-icon>
-                            <ion-icon name="logo-playstation"></ion-icon>
+                            <?php
+                                if($product['platform_pc'])
+                                    echo '<ion-icon name="logo-windows"></ion-icon>';
+                                if($product['platform_ps'])
+                                    echo '<ion-icon name="logo-playstation"></ion-icon>';
+                                if($product['platform_xbox'])
+                                    echo '<ion-icon name="logo-xbox"></ion-icon>';
+                            ?>
                         </div>
                         <?php echo $product['name']?>
                     </div>
@@ -77,6 +84,13 @@ echo "</div>";
 
 
 
+
+<!-- later this will be used to upload new photos to the database -->
+
+<!--<form method="POST" action="" enctype="multipart/form-data">-->
+<!--    <input type="file" name="myimage">-->
+<!--    <input type="submit" name="submit_image" value="Upload">-->
+<!--</form>-->
 
 
 <!-- showing photos -->
