@@ -3,8 +3,9 @@ require_once "../../global.php";
 require "../../connect.php";
 
 
-if (!login()) //login determines whether the user is authorized or not
-    header('Location: ../../index.php');
+//if (!login()) //login determines whether the user is authorized or not
+//    header('Location: ../../index.php');
+
 require_once "../Header.php";
 ?>
 <!DOCTYPE html>
@@ -33,7 +34,6 @@ require_once "../Header.php";
 <!-- displaying goods from the database -->
 <?php
 
-$i = 0;
 if (!isset($_POST['findBy'])) {
     $sql = "select * from product";
 }
@@ -69,11 +69,6 @@ while($product = $res->fetch_assoc()){
                 </a>
             </div>
 <?php
-    if (($i+1) %3 == 0)
-    {
-        echo "</div><div class='wrapper'>";
-    }
-$i+=1;
 }
 echo "</div>";
 ?>
@@ -82,47 +77,6 @@ echo "</div>";
 </nav>
 </div>
 
-
-
-
-<!-- later this will be used to upload new photos to the database -->
-
-<!--<form method="POST" action="" enctype="multipart/form-data">-->
-<!--    <input type="file" name="myimage">-->
-<!--    <input type="submit" name="submit_image" value="Upload">-->
-<!--</form>-->
-
-
-<!-- showing photos -->
-<?php
-//$select_image="select * from product where id=1";
-//
-//$res= $connect->query($select_image);
-//
-//if($row=$res->fetch_array())
-//    $image_content=$row['image'];
-//
-//echo"<img class='' src ='data:image/png;base64," . base64_encode($image_content) . "'>";
-//?>
-
-<!--uploading a photo-->
-<?php
-//if (empty($_FILES['myimage']['tmp_name'])) return;
-//$newImg=addslashes(file_get_contents($_FILES['myimage']['tmp_name']));
-//$newName = $_FILES["myimage"]["name"];
-////$sql = "UPDATE product
-////            SET image = '$newImg',
-////            name = '$newName'
-////            WHERE id= 1";
-//
-//$sql = "insert into product
-//                    (name, description, image, price, discount, platform_pc, platform_xbox, platform_ps)
-//            values ('new name', 'new description', '$newImg', 101, 11, true, true, false);";
-//
-//
-//    $conn = new mysqli("localhost", "root", "", "shop");
-//    $res = $conn->query($sql);
-?>
 
 
 <?php

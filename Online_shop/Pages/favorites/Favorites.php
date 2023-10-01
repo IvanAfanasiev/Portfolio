@@ -40,7 +40,6 @@ if ( isset($_POST['changeFavorites']) ) {
     <nav class="goodsList">
         <!-- displaying photos from the database -->
         <?php
-        $i = 0;
         if (!isset($_POST['findBy']))
             $sql = "select * from product p inner join
                 favorites f on p.id = f.product_id where f.user_id = '$_SESSION[id]'";
@@ -62,9 +61,14 @@ if ( isset($_POST['changeFavorites']) ) {
                     </div>
                     <div class="description">
                         <div class="platforms">
-                            <ion-icon name="logo-windows"></ion-icon>
-                            <ion-icon name="logo-xbox"></ion-icon>
-                            <ion-icon name="logo-playstation"></ion-icon>
+                            <?php
+                                if($product['platform_pc'])
+                                    echo '<ion-icon name="logo-windows"></ion-icon>';
+                                if($product['platform_ps'])
+                                    echo '<ion-icon name="logo-playstation"></ion-icon>';
+                                if($product['platform_xbox'])
+                                    echo '<ion-icon name="logo-xbox"></ion-icon>';
+                            ?>
                         </div>
                         <?php echo $product['name']?>
                         <form method="POST" action="">
@@ -76,11 +80,6 @@ if ( isset($_POST['changeFavorites']) ) {
             </a>
             </div>
             <?php
-            if (($i+1) %3 == 0)
-            {
-                echo "</div><div class='wrapper'>";
-            }
-            $i+=1;
         }
         echo "</div>";
         ?>
