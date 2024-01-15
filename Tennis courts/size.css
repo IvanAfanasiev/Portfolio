@@ -1,0 +1,32 @@
+@media (width < 790px) {
+    .links{
+        top: 0;
+        margin: 10px;
+        column-gap: 0;
+        justify-content: space-evenly;
+        font-size: 1.5em;
+    }
+    .linkName{
+        opacity: 1;
+    }
+}
+@media (width < 500px){
+    .phoneHeader{
+        display: block;
+    }
+    .desktopHeader{
+        display: none;
+    }
+    .pageName{
+        margin-top: 5vh;
+    }
+    .mainSection{
+        top: 5vh;
+    }
+    .save{
+        font-size: 25px;
+    }
+    .list{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
