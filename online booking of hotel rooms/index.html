@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet"/>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>html{scroll-behavior: smooth;}</style>  
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+
+    <mobile_header id="_mobile_menu">
+        <mobile_menu>
+            <a class="a_link" id="home_link" href="#_home">
+                Home
+            </a>
+            <a class="a_link" href="#_offers">
+                Offers
+            </a>
+            <a class="a_link" href="#_reviews">
+                Reviews
+            </a>
+            <a class="a_link" id="contact_link" href="#_footer">
+                Contact
+            </a>
+        </mobile_menu>
+            <mobile_header_line>
+                <div class="wrapper">
+                <a>
+                    <legend>WT</legend>
+                </a>
+                <button onclick="OnToggleMobileMenu()" class="ToggleMobileMenu" id="_ToggleMobileMenu">
+                    <ion-icon name="chevron-up-outline"></ion-icon>
+                </button>
+            </div>
+            </mobile_header_line>
+    </mobile_header>
+
+
+
+<sections>
+    <first_chunk class="section" id="_home">
+        
+        <mainUpper>
+            <bg>
+                <img loading="lazy" src="./images/winter-house.jpg">
+            </bg>
+            <legend>
+                Winter Tale
+                <p class="des">
+                    Houses and a hotel for recreation and entertainment.
+                </p>
+            </legend>
+                
+
+            <div class="mainButtons">
+                <button class="mainBtn1">
+                    Reserve a room
+                </button>
+                
+                <button class="mainBtn2">
+                    Learn more
+                </button>
+            </div>
+        </mainUpper>
+    </first_chunk>
+        
+
+    <second_chunk class="section">
+        <div class="offer" id="_offers">
+            <div class="offerIco">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+            </div>
+            <div class="offerName">
+                Reservation
+            </div>
+            <p class="offerDescription">
+                Book hotel rooms quickly!
+            </p>
+        </div>
+        
+        <div class="offer">
+            <div class="offerIco">
+                <ion-icon name="wifi"></ion-icon>
+            </div>
+            <div class="offerName">
+                Network
+            </div>
+            <p class="offerDescription">
+                You're still in touch with the whole world. Share your impressions right from here!
+            </p>
+        </div>
+
+        <div class="offer">
+            <div class="offerIco">
+                <ion-icon name="restaurant-outline"></ion-icon>
+            </div>
+            <div class="offerName">
+                Food
+            </div>
+            <p class="offerDescription">
+                Delicious food is included in the price
+            </p>
+        </div>
+
+        <div class="offer">
+            <div class="offerIco">
+                <ion-icon name="bed-outline"></ion-icon>
+            </div>
+            <div class="offerName">
+                Wide choice
+            </div>
+            <p class="offerDescription">
+                Rooms of any size. Don't like the room? We also have houses for rent!
+            </p>
+        </div>
+
+        <div class="offer">
+            <div class="offerIco">
+                <ion-icon name="happy-outline"></ion-icon>
+            </div>
+            <div class="offerName">
+                Impressions
+            </div>
+            <p class="offerDescription">
+                An unforgettable view and impressions are guaranteed!
+            </p>
+        </div>
+        
+
+    </second_chunk>
+
+
+    <reviews class="section" id="_reviews">
+        <div class="sectionName">Latest reviews</div>
+        <p class="sectionDescription">
+            Here you can see what others are saying about us!
+        </p>
+        <div class="scrollWrapper">
+            <feedback>
+                <div class="clientName">Kate</div>
+                <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-half"></ion-icon>
+                </div>
+                <p class="review">Well, it's okay..</p>
+            </feedback>
+
+            <feedback>
+                <div class="clientName">Andre</div>
+                <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                </div>
+                <p class="review">I liked it!</p>
+            </feedback>
+
+            <feedback>
+                <div class="clientName">Anton</div>
+                <div class="rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                </div>
+                <p class="review">Damn,  so so =(</p>
+            </feedback>
+        </div>
+
+    </reviews>
+
+
+
+
+    <footer class="footer" id="_footer">
+        <div class="wrapper">
+            <div class="block">
+                <div class="blockName">Company Info</div>
+                <p class="blockItem">About Us</p>
+                <p class="blockItem">Blog</p>
+                <p class="blockItem">Preview</p>
+            </div>
+
+            <div class="block">
+                <div class="blockName">Contact</div>
+                <div>
+                    <div class="blockItem">
+                        <div class="footerIco">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </div>
+                        <p>Location</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="blockItem">
+                        <div class="footerIco">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </div>
+                        <p>Phone number</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="blockItem">
+                        <div class="footerIco">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+                        <a href="mailto:afanasievivan10@gmail.com">E-mail</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block">
+                <div class="blockName">Our social networks</div>
+                <div class="SocNetWrapper">
+                    <a class="facebookIco SocNet">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                    <a class="instIco SocNet">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                    <a class="tiktokIco SocNet">
+                        <ion-icon name="logo-tiktok"></ion-icon>
+                    </a>
+                    <a class="twitterIco SocNet">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                    <a class="youtubeIco SocNet">
+                        <ion-icon name="logo-youtube"></ion-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</sections>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
